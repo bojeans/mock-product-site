@@ -1,13 +1,26 @@
-const Products = async () => {
-    const res = await fetch('https://fakestoreapi.com/products');
-    const result = await res.json();
-    console.log(result);
+import Product from "./Product";
 
-    return(
-        <div>
-            <p>placeholder paragraph component</p>
-        </div>
-    )
-}
+type ProductsProps = {
+  products: any[];
+};
+
+const Products = ({ products }: ProductsProps) => {
+  return (
+    <ul>
+      {products.map((product) => (
+        <Product
+          key={product.id}
+          id={product.id}
+          title={product.title}
+          category={product.category}
+          image={product.image}
+          description={product.description}
+          price={product.price}
+          rating={product.rating}
+        />
+      ))}
+    </ul>
+  );
+};
 
 export default Products;

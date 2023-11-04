@@ -1,24 +1,21 @@
-// import { type } from "os";
-// import React from "react";
+type ProductsTypes = {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  price: number;
+  rating: {
+    count: number;
+    rate: number;
+  };
+};
 
-type Products = {
-    id: number;
-    title: string;
-    category: string;
-    description: string;
-    image: string;
-    price: number;
-    rating: {
-        count: number;
-        rate: number;
-    }
-}
-
-const Product = (props: Products) => {
+const Product = (props: ProductsTypes) => {
   return (
     <li>
-        <h2>{props.title}</h2>
-        <p>{props.category}</p>
+      <h2>{props.title}</h2>
+      <p>{props.category}</p>
       <img src={props.image} alt={"product"} />
       <p>{props.rating.count}</p>
       <p>{props.rating.rate}</p>
