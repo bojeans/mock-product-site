@@ -16,6 +16,7 @@ const onClick = () => {
 };
 
 const Product = (props: ProductsTypes) => {
+  const formattedPrice = props.price.toFixed(2);
   return (
     <li className="Product">
       <h2>{props.title}</h2>
@@ -23,10 +24,10 @@ const Product = (props: ProductsTypes) => {
       <div className="ProductContent">
         <img src={props.image} alt="product" className="ProductImage" />
         <div className="ProductDetails">
-          <p>{props.rating.count}</p>
-          <p>{props.rating.rate}</p>
+          <p>{props.rating.count} in stock</p>
+          <p>{props.rating.rate}/5</p>
           <p>{props.description}</p>
-          <p>{props.price}</p>
+          <p>${formattedPrice}</p>
           <button onClick={onClick}>Buy Now</button>
         </div>
       </div>
