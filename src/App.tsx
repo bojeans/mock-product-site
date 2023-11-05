@@ -39,7 +39,27 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1>Mock Shop for coding demonstration</h1>
+      <h1>Mock Shop for coding demonstration. </h1>
+      <span>
+        *product information fetched from{" "}
+        <a
+          href="https://fakestoreapi.com/docs"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {" "}
+          fakestoreAPI
+        </a>{" "}
+        Here's a link to my{" "}
+        <a
+          href="https://github.com/bojeans/mock-product-site"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Github Repo
+        </a>
+      </span>
+
       <div className="products-container">
         <Products products={currentProducts} />
       </div>
