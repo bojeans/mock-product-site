@@ -1,5 +1,10 @@
 
 /* <ul> class */
+.app-container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
 .Products {
   display: grid;
   grid-template-columns: 1fr; 
@@ -22,13 +27,31 @@
 }
 
 .ProductImage {
-  width: 70vw; /* To ensure images take full width within their container */
-  height: 40vh; /* Set a fixed height or adjust as needed */
+  width: 100%; /* To ensure images take full width within their container */
+  height: 100%; /* Set a fixed height or adjust as needed */
   object-fit: cover; /* Maintains aspect ratio */
 }
 
 .Product h2, .Product p {
   margin: 5px;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination-button {
+  margin: 0 5px;
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-info {
+  font-weight: bold;
 }
 
 @media screen and (min-width: 48rem) {
