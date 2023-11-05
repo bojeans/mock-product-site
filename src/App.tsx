@@ -17,7 +17,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Title - woohoo</h1>
+      <h1>Mock shop for demonstration</h1>
       <Products products={products} />
     </div>
   );

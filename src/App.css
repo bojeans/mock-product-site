@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
+
+/* <ul> class */
+.Products {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1.1rem;
+  justify-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* <li> class */
+.Product {
+  border: 1px solid #ccc; 
+  list-style: none;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.ProductContent {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto; /* Adjust rows for different content */
+  gap: 0.5rem;
+  justify-items: center;
+}
+
+.ProductImage {
+  width: 70vw; /* To ensure images take full width within their container */
+  height: 40vh; /* Set a fixed height or adjust as needed */
+  object-fit: cover; /* Maintains aspect ratio */
+}
+
+.Product h2, .Product p {
+  margin: 5px;
+}
+
+@media screen and (min-width: 48rem) {
+  .Products {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns once screen width reaches 48rem */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (min-width: 60rem) {
+  .Products {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns once screen width hits 60rem */
   }
 }

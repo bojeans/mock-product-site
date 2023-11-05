@@ -1,4 +1,4 @@
-interface ProductsTypes {
+type ProductsTypes = {
   id: number;
   title: string;
   category: string;
@@ -9,19 +9,23 @@ interface ProductsTypes {
     count: number;
     rate: number;
   };
-}
+};
 
 const Product = (props: ProductsTypes) => {
   return (
-    <li>
+    <li className="Product">
       <h2>{props.title}</h2>
-      <p>{props.category}</p>
-      <img src={props.image} alt={"product"} />
-      <p>{props.rating.count}</p>
-      <p>{props.rating.rate}</p>
-      <p>{props.description}</p>
-      <p>{props.price}</p>
-      <button>Buy Now</button>
+      <p className="ProductCategory">Category: {props.category}</p>
+      <div className="ProductContent">
+        <img src={props.image} alt="product" className="ProductImage" />
+        <div className="ProductDetails">
+          <p>{props.rating.count}</p>
+          <p>{props.rating.rate}</p>
+          <p>{props.description}</p>
+          <p>{props.price}</p>
+          <button>Buy Now</button>
+        </div>
+      </div>
     </li>
   );
 };

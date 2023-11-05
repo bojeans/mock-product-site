@@ -1,4 +1,5 @@
 import Product from "./Product";
+import "../App.css"; // Import the styles
 
 type ProductsProps = {
   products: any[];
@@ -6,7 +7,7 @@ type ProductsProps = {
 
 const Products = ({ products }: ProductsProps) => {
   return (
-    <ul>
+    <div className="Products">
       {products.map((product) => (
         <Product
           key={product.id}
@@ -19,7 +20,7 @@ const Products = ({ products }: ProductsProps) => {
           rating={product.rating}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 
