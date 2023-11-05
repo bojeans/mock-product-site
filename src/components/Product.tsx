@@ -11,6 +11,10 @@ type ProductsTypes = {
   };
 };
 
+const onClick = () => {
+  alert("this button works, however this shop is not live :)");
+};
+
 const Product = (props: ProductsTypes) => {
   return (
     <li className="Product">
@@ -23,7 +27,7 @@ const Product = (props: ProductsTypes) => {
           <p>{props.rating.rate}</p>
           <p>{props.description}</p>
           <p>{props.price}</p>
-          <button>Buy Now</button>
+          <button onClick={onClick}>Buy Now</button>
         </div>
       </div>
     </li>
