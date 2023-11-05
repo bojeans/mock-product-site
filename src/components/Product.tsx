@@ -1,4 +1,4 @@
-type ProductsTypes = {
+interface ProductsTypes {
   id: number;
   title: string;
   category: string;
@@ -9,7 +9,7 @@ type ProductsTypes = {
     count: number;
     rate: number;
   };
-};
+}
 
 const Product = (props: ProductsTypes) => {
   return (
