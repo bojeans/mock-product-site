@@ -69,7 +69,26 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      <h1>Title - woohoo</h1>
+      <h1>Mock Shop for coding demonstration. </h1>
+      <span>
+        *product information fetched from{" "}
+        <a
+          href="https://fakestoreapi.com/docs"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {" "}
+          fakestoreAPI
+        </a>{" "}
+        Here's a link to my{" "}
+        <a
+          href="https://github.com/bojeans/mock-product-site"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Github Repo
+        </a>
+      </span>
       <div className="filter-sort">
         <SortBy handleSortChange={handleSortChange} />
         <FilterBy handleFilterChange={handleFilterChange} />
@@ -78,6 +97,12 @@ const App: React.FC = () => {
         <Products products={currentProducts} />
       </div>
       <div className="pagination">
+        <button
+          onClick={() => paginate(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          {"<"}
+        </button>
         {Array.from({
           length: Math.ceil(sortedProducts.length / productsPerPage),
         }).map((_, index) => (
@@ -85,7 +110,19 @@ const App: React.FC = () => {
             {index + 1}
           </button>
         ))}
+        <button
+          onClick={() => paginate(currentPage + 1)}
+          disabled={
+            currentPage === Math.ceil(sortedProducts.length / productsPerPage)
+          }
+        >
+          {">"}
+        </button>
       </div>
+      <p>
+        Page {currentPage} of{" "}
+        {Math.ceil(sortedProducts.length / productsPerPage)}
+      </p>
     </div>
   );
 };
