@@ -7,6 +7,7 @@ import FilterBy from "./components/filterBy";
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [sortedProducts, setSortedProducts] = useState<any[]>([]);
   const [filter, setFilter] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,46 +16,57 @@ const App: React.FC = () => {
   const fetchProducts = async () => {
     const data = await fetchAPI();
     setProducts(data);
+    setFilteredProducts(data);
     setSortedProducts(data);
-  };
-
-  const handleSortChange = (value: string) => {
-    let sorted = [...sortedProducts];
-    if (value === "lowprice") {
-      sorted = [...sortedProducts].sort((a, b) => a.price - b.price);
-    } else if (value === "highprice") {
-      sorted = [...sortedProducts].sort((a, b) => b.price - a.price);
-    } else if (value === "category") {
-      sorted = [...sortedProducts].sort((a, b) =>
-        a.category.localeCompare(b.category)
-      );
-    } else if (value === "rating") {
-      sorted = [...sortedProducts].sort(
-        (a, b) => b.rating.rate - a.rating.rate
-      );
-    }
-    setSortedProducts(sorted);
-  };
-
-  const handleFilterChange = (value: string) => {
-    setFilter(value);
-    setCurrentPage(1);
   };
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    const updatedProducts = filter
-      ? products.filter(
-          (product) =>
-            product.category === filter ||
-            (filter === "rating" && product.rating.rate >= 4)
-        )
-      : products;
-    setSortedProducts(updatedProducts);
-  }, [filter, products]);
+  const handleSortChange = (value: string) => {
+    let sorted = [...filteredProducts];
+    if (value === "lowprice") {
+      sorted = [...filteredProducts].sort((a, b) => a.price - b.price);
+    } else if (value === "highprice") {
+      sorted = [...filteredProducts].sort((a, b) => b.price - a.price);
+    } else if (value === "category") {
+      sorted = [...filteredProducts].sort((a, b) =>
+        a.category.localeCompare(b.category)
+      );
+    } else if (value === "rating") {
+      sorted = [...filteredProducts].sort(
+        (a, b) => b.rating.rate - a.rating.rate
+      );
+    }
+    setSortedProducts(sorted);
+    setCurrentPage(1);
+  };
+
+  const handleFilterChange = (value: string) => {
+    if (filter === "rating" && value !== "rating") {
+      setFilteredProducts(products);
+      setSortedProducts(products);
+    } else if (value === "rating") {
+      const updatedProducts = products.filter(
+        (product) => product.rating.rate >= 4
+      );
+      setFilteredProducts(updatedProducts);
+      setSortedProducts(updatedProducts);
+    } else {
+      const updatedProducts = products.filter(
+        (product) => product.category === value
+      );
+      setFilteredProducts(updatedProducts);
+      setSortedProducts(updatedProducts);
+    }
+    setFilter(value);
+    setCurrentPage(1);
+  };
+
+  const paginate = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -62,10 +74,6 @@ const App: React.FC = () => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
-
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
 
   return (
     <div className="app-container">
@@ -106,7 +114,7 @@ const App: React.FC = () => {
         {Array.from({
           length: Math.ceil(sortedProducts.length / productsPerPage),
         }).map((_, index) => (
-          <button key={index} onClick={() => paginate(index + 1)}>
+          <button key={index + 1} onClick={() => paginate(index + 1)}>
             {index + 1}
           </button>
         ))}
