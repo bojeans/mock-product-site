@@ -12,7 +12,9 @@ type ProductsTypes = {
 };
 
 const onClick = () => {
-  alert("this button works, however this shop is not live :)");
+  alert(
+    "this button works, however this shop is not live :) If you are using this codebase and are curious, would suggest researching a payment gateway such as Stripe API."
+  );
 };
 
 const Product = (props: ProductsTypes) => {
