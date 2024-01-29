@@ -1,67 +1,69 @@
-
-/* <ul> class */
+/* Container class */
 .app-container {
   text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', sans-serif; 
+  max-width: 75rem; 
+  margin: 0 auto; 
+  padding: 0 1.5rem; 
 }
 
+/* Grid for products */
 .Products {
   display: grid;
-  grid-template-columns: 1fr; 
-  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); 
+  gap: 1.5rem; 
   justify-items: center;
+  margin-top: 2rem; 
 }
 
-/* <li> class */
+/* Product item */
 .Product {
-  border: 1px solid #ccc; 
+  border: 0.1rem solid #e0e0e0; 
   list-style: none;
-  
+  width: 100%; 
+  padding: 1.5rem; 
+  background-color: #fff; 
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1); 
 }
 
+/* Grid for product content */
 .ProductContent {
   display: grid;
-  grid-template-rows: auto auto 1fr auto; /* Adjust rows for different content */
-  gap: 0.5rem;
+  grid-template-rows: auto auto 1fr auto; 
+  gap: 0.75rem; 
   justify-items: center;
 }
 
 .ProductImage {
-  width: 100%; /* To ensure images take full width within their container */
-  height: 100%; /* Set a fixed height or adjust as needed */
-  object-fit: cover; /* Maintains aspect ratio */
+  width: 100%; 
+  max-height: 12.5rem; 
+  object-fit: cover; 
 }
 
 .Product h2, .Product p {
-  margin: 5px;
+  margin: 0.3125rem 0; 
 }
 
+/* Pagination styles */
 .pagination {
-  margin-top: 20px;
+  margin-top: 1.25rem;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
 }
 
 .pagination-button {
-  margin: 0 5px;
-  padding: 8px 16px;
-  background-color: #3498db;
-  color: white;
+  margin: 0 0.3125rem;
+  padding: 0.5rem 1rem;
+  background-color: #3498db; 
+  color: #fff; 
   border: none;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   cursor: pointer;
+  text-decoration: none; 
+  font-family: 'Roboto', sans-serif; 
 }
 
 .pagination-info {
   font-weight: bold;
-}
-
-@media screen and (min-width: 48rem) {
-  .Products {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns once screen width reaches 48rem */
-  }
-}
-
-@media screen and (min-width: 60rem) {
-  .Products {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns once screen width hits 60rem */
-  }
 }
