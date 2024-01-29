@@ -4,11 +4,13 @@ import Products from "./components/Products";
 import fetchAPI from "./components/fetchAPI";
 import SortBy from "./components/sortBy";
 import FilterBy from "./components/filterBy";
+import SearchBy from "./components/searchBy";
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
   const [sortedProducts, setSortedProducts] = useState<any[]>([]);
+  const [search, setSearch] = useState<string>("");
   const [filter, setFilter] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
@@ -24,6 +26,7 @@ const App: React.FC = () => {
     fetchProducts();
   }, []);
 
+  // Sort by price, category, or rating
   const handleSortChange = (value: string) => {
     let sorted = [...filteredProducts];
     if (value === "lowprice") {
@@ -43,6 +46,7 @@ const App: React.FC = () => {
     setCurrentPage(1);
   };
 
+  // Filter by rating or category
   const handleFilterChange = (value: string) => {
     if (filter === "rating" && value !== "rating") {
       setFilteredProducts(products);
@@ -64,6 +68,23 @@ const App: React.FC = () => {
     setCurrentPage(1);
   };
 
+  // Search by product name
+  const handleSearchChange = (value: string) => {
+    setSearch(value);
+    if (value === "") {
+      setFilteredProducts(products);
+      setSortedProducts(products);
+    } else {
+      const updatedProducts = products.filter((product) =>
+        product.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredProducts(updatedProducts);
+      setSortedProducts(updatedProducts);
+    }
+    setCurrentPage(1);
+  };
+
+  // Pagination
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
@@ -100,6 +121,7 @@ const App: React.FC = () => {
       <div className="filter-sort">
         <SortBy handleSortChange={handleSortChange} />
         <FilterBy handleFilterChange={handleFilterChange} />
+        <SearchBy handleSearchChange={handleSearchChange} />
       </div>
       <div className="products-container">
         <Products products={currentProducts} />
