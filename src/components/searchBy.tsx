@@ -17,7 +17,6 @@ const SearchBy = ({ handleSearchChange }: SearchByProps) => {
         placeholder="Search..."
         onChange={handleSearch}
       />
-      <input type="submit" value="Search" />
     </form>
   );
 };
