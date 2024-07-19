@@ -1,5 +1,5 @@
 import React from "react";
-import "../App.css";
+import { Card } from "react-bootstrap";
 
 type ProductProps = {
   id: number;
@@ -8,13 +8,10 @@ type ProductProps = {
   image: string;
   description: string;
   price: number;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  rating: { rate: number; count: number };
 };
 
-const Product = ({
+const Product: React.FC<ProductProps> = ({
   id,
   title,
   category,
@@ -22,20 +19,20 @@ const Product = ({
   description,
   price,
   rating,
-}: ProductProps) => {
+}) => {
   return (
-    <div className="Product">
-      <img src={image} alt={title} className="ProductImage" />
-      <div className="ProductContent">
-        <h2>{title}</h2>
-        <p className="text-truncate">{description}</p>
-        <p>Category: {category}</p>
-        <p>Price: ${price}</p>
-        <p>
+    <Card className="Product">
+      <Card.Img variant="top" src={image} className="ProductImage" />
+      <Card.Body className="ProductContent">
+        <Card.Title>{title}</Card.Title>
+        <Card.Text className="ProductDescription">{description}</Card.Text>
+        <Card.Text>Category: {category}</Card.Text>
+        <Card.Text>Price: ${price}</Card.Text>
+        <Card.Text>
           Rating: {rating.rate} ({rating.count} reviews)
-        </p>
-      </div>
-    </div>
+        </Card.Text>
+      </Card.Body>
+    </Card>
   );
 };
 

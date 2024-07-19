@@ -1,24 +1,23 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 
 type SortByProps = {
   handleSortChange: (value: string) => void;
 };
 
-const SortBy: React.FC<SortByProps> = ({ handleSortChange }) => {
-  const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    handleSortChange(e.target.value);
-  };
-
+const SortBy = ({ handleSortChange }: SortByProps) => {
   return (
-    <div>
-      <label htmlFor="sort">Sort By:</label>
-      <select id="sort" onChange={handleSort}>
-        <option value="lowprice">Low Price</option>
-        <option value="highprice">High Price</option>
-        <option value="category">Category</option>
-        <option value="rating">Rating</option>
-      </select>
-    </div>
+    <Form.Control
+      as="select"
+      onChange={(e) => handleSortChange(e.target.value)}
+      className="sort-by"
+    >
+      <option value="">Sort by</option>
+      <option value="lowprice">Price: Low to High</option>
+      <option value="highprice">Price: High to Low</option>
+      <option value="category">Category</option>
+      <option value="rating">Rating</option>
+    </Form.Control>
   );
 };
 
