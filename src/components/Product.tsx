@@ -1,39 +1,41 @@
-type ProductsTypes = {
+import React from "react";
+import "../App.css";
+
+type ProductProps = {
   id: number;
   title: string;
   category: string;
-  description: string;
   image: string;
+  description: string;
   price: number;
   rating: {
-    count: number;
     rate: number;
+    count: number;
   };
 };
 
-const onClick = () => {
-  alert(
-    "this button works, however this shop is not live :) If you are using this codebase and are curious, would suggest researching a payment gateway such as Stripe API."
-  );
-};
-
-const Product = (props: ProductsTypes) => {
-  const formattedPrice = props.price.toFixed(2);
+const Product = ({
+  id,
+  title,
+  category,
+  image,
+  description,
+  price,
+  rating,
+}: ProductProps) => {
   return (
-    <li className="Product">
-      <h2>{props.title}</h2>
-      <p className="ProductCategory">Category: {props.category}</p>
+    <div className="Product">
+      <img src={image} alt={title} className="ProductImage" />
       <div className="ProductContent">
-        <img src={props.image} alt="product" className="ProductImage" />
-        <div className="ProductDetails">
-          <p>{props.rating.count} in stock</p>
-          <p>{props.rating.rate}/5</p>
-          <p>{props.description}</p>
-          <p>${formattedPrice}</p>
-          <button onClick={onClick}>Buy Now</button>
-        </div>
+        <h2>{title}</h2>
+        <p className="text-truncate">{description}</p>
+        <p>Category: {category}</p>
+        <p>Price: ${price}</p>
+        <p>
+          Rating: {rating.rate} ({rating.count} reviews)
+        </p>
       </div>
-    </li>
+    </div>
   );
 };
 

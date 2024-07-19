@@ -1,5 +1,5 @@
 import Product from "./Product";
-import "../App.css"; // Import the styles
+import "../App.css";
 
 type ProductsProps = {
   products: any[];

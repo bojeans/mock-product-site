@@ -26,7 +26,6 @@ const App: React.FC = () => {
     fetchProducts();
   }, []);
 
-  // Sort by price, category, or rating
   const handleSortChange = (value: string) => {
     let sorted = [...filteredProducts];
     if (value === "lowprice") {
@@ -46,7 +45,6 @@ const App: React.FC = () => {
     setCurrentPage(1);
   };
 
-  // Filter by rating or category
   const handleFilterChange = (value: string) => {
     if (filter === "rating" && value !== "rating") {
       setFilteredProducts(products);
@@ -68,7 +66,6 @@ const App: React.FC = () => {
     setCurrentPage(1);
   };
 
-  // Search by product name
   const handleSearchChange = (value: string) => {
     setSearch(value);
     if (value === "") {
@@ -84,7 +81,6 @@ const App: React.FC = () => {
     setCurrentPage(1);
   };
 
-  // Pagination
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
@@ -98,18 +94,17 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      <h1>Mock Shop for coding demonstration. </h1>
+      <h1>Mock Shop for Coding Demonstration</h1>
       <span>
-        *product information fetched from{" "}
+        *Product information fetched from{" "}
         <a
           href="https://fakestoreapi.com/docs"
           target="_blank"
           rel="noreferrer"
         >
-          {" "}
-          fakestoreAPI
-        </a>{" "}
-        Here's a link to my{" "}
+          FakeStoreAPI
+        </a>
+        . Here's a link to my{" "}
         <a
           href="https://github.com/bojeans/mock-product-site"
           target="_blank"
@@ -149,10 +144,12 @@ const App: React.FC = () => {
           {">"}
         </button>
       </div>
-      <p>
-        Page {currentPage} of{" "}
-        {Math.ceil(sortedProducts.length / productsPerPage)}
-      </p>
+      <div className="pagination-info">
+        <p>
+          Page {currentPage} of{" "}
+          {Math.ceil(sortedProducts.length / productsPerPage)}
+        </p>
+      </div>
     </div>
   );
 };
