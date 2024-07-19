@@ -60,22 +60,34 @@
 .sort-by,
 .search-by {
   display: block;
-  width: 100%;
-  margin-bottom: 1rem;
+  width: auto;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
 }
 
-@media (min-width: 36rem) { /* Adjusting for tablet view */
-  .Products {
-    grid-template-columns: repeat(2, 1fr); /* This will ensure 2 images per row */
-  }
+/* This Styles For all Sort/Filter/Search container area */
+.filter-sort {
+  margin-top: 1rem;
 }
 
-@media (min-width: 62rem) { /* Adjusting for desktop view */
-  .Products {
-    grid-template-columns: repeat(3, 1fr); /* This will ensure 3 images per row */
-  }
+/* 'Filter By' & 'Sort By' text */
+.sort-label,
+.filter-label {
+  color: rgb(92, 92, 92);
+  margin: 0 1rem;
 }
 
+.search-box {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+}
+
+/* Pagination */
 .pagination {
   margin-top: 1.25rem;
   display: flex;
@@ -101,19 +113,46 @@
   margin-top: 0.5rem;
 }
 
-.filter-by,
-.sort-by,
-.search-by {
+@media (min-width: 36rem) { 
+  .Products {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  .filter-by,
+  .sort-by,
+  .search-by {
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 1px solid #ccc;
-}
-
-.filter-sort {
+  }
+  .filter-sort {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1.5rem;
   gap: 1rem;
+  }
+}
+
+@media (min-width: 62rem) {
+  .Products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .filter-by,
+  .sort-by,
+  .search-by {
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  }
+
+  .filter-sort {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  }
 }

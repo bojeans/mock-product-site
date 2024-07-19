@@ -12,7 +12,7 @@ const FilterBy: React.FC<FilterByProps> = ({ handleFilterChange }) => {
 
   return (
     <Form.Group controlId="filter">
-      <Form.Label>Filter By:</Form.Label>
+      <Form.Label className="filter-label">Filter By:</Form.Label>
       <Form.Control as="select" onChange={handleFilter} className="filter-by">
         <option value="category">Category</option>
         <option value="rating">Rating 4 or higher</option>

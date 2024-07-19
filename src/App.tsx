@@ -116,8 +116,10 @@ const App: React.FC = () => {
       <div className="filter-sort">
         <SortBy handleSortChange={handleSortChange} />
         <FilterBy handleFilterChange={handleFilterChange} />
-        <SearchBy handleSearchChange={handleSearchChange} />
       </div>
+
+      <SearchBy handleSearchChange={handleSearchChange} />
+
       <div className="products-container">
         <Products products={currentProducts} />
       </div>
