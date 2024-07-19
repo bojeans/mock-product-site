@@ -7,17 +7,19 @@ type SortByProps = {
 
 const SortBy = ({ handleSortChange }: SortByProps) => {
   return (
-    <Form.Control
-      as="select"
-      onChange={(e) => handleSortChange(e.target.value)}
-      className="sort-by"
-    >
-      <option value="">Sort by</option>
-      <option value="lowprice">Price: Low to High</option>
-      <option value="highprice">Price: High to Low</option>
-      <option value="category">Category</option>
-      <option value="rating">Rating</option>
-    </Form.Control>
+    <Form.Group controlId="sort">
+      <Form.Label>Sort By:</Form.Label>
+      <Form.Control
+        as="select"
+        onChange={(e) => handleSortChange(e.target.value)}
+        className="sort-by"
+      >
+        <option value="lowprice">Price: Low to High</option>
+        <option value="highprice">Price: High to Low</option>
+        <option value="category">Category</option>
+        <option value="rating">Rating</option>
+      </Form.Control>
+    </Form.Group>
   );
 };
 
