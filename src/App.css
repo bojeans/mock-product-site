@@ -1,4 +1,3 @@
-/* Container class */
 .app-container {
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -7,26 +6,26 @@
   padding: 0 1.5rem;
 }
 
-/* Grid for products */
 .Products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   justify-items: center;
-  margin-top: 2rem;
+  margin: 1rem;
+  padding: 1rem;
 }
 
-/* Product item */
 .Product {
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   border: 0.1rem solid #e0e0e0;
   list-style: none;
   width: 100%;
-  padding: 1.5rem;
   background-color: #fff;
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
 }
 
-/* Grid for product content */
 .ProductContent {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
@@ -40,26 +39,26 @@
   object-fit: cover;
 }
 
-/* Responsive grid layout */
-@media (max-width: 576px) {
+.filter-by,
+.sort-by,
+.search-by {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 36rem) { /* Adjusting for tablet view */
   .Products {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* This will ensure 2 images per row */
   }
 }
 
-@media (min-width: 576px) and (max-width: 992px) {
+@media (min-width: 62rem) { /* Adjusting for desktop view */
   .Products {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* This will ensure 3 images per row */
   }
 }
 
-@media (min-width: 992px) {
-  .Products {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Pagination styles */
 .pagination {
   margin-top: 1.25rem;
   display: flex;
@@ -85,7 +84,6 @@
   margin-top: 0.5rem;
 }
 
-/* Styles for filter, sort, and search */
 .filter-by,
 .sort-by,
 .search-by {

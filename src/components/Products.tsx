@@ -16,7 +16,7 @@ const Products = ({ products }: ProductsProps) => {
             xs={12}
             sm={6}
             md={4}
-            lg={6}
+            lg={4}
             xl={4}
             className="mb-4"
           >
