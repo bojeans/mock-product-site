@@ -1,39 +1,36 @@
-type ProductsTypes = {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  image: string;
-  price: number;
-  rating: {
-    count: number;
-    rate: number;
-  };
-};
+import React from "react";
+import { Card, Button } from "react-bootstrap";
+import { formatPrice } from "../utils/formatPrice";
+import { ProductProps } from "../types";
+// import { handleBuyClick } from "../utils/payment";
 
-const onClick = () => {
-  alert(
-    "this button works, however this shop is not live :) If you are using this codebase and are curious, would suggest researching a payment gateway such as Stripe API."
-  );
-};
-
-const Product = (props: ProductsTypes) => {
-  const formattedPrice = props.price.toFixed(2);
+const Product: React.FC<ProductProps> = ({
+  id,
+  title,
+  category,
+  image,
+  description,
+  price,
+  rating,
+}) => {
   return (
-    <li className="Product">
-      <h2>{props.title}</h2>
-      <p className="ProductCategory">Category: {props.category}</p>
-      <div className="ProductContent">
-        <img src={props.image} alt="product" className="ProductImage" />
-        <div className="ProductDetails">
-          <p>{props.rating.count} in stock</p>
-          <p>{props.rating.rate}/5</p>
-          <p>{props.description}</p>
-          <p>${formattedPrice}</p>
-          <button onClick={onClick}>Buy Now</button>
-        </div>
-      </div>
-    </li>
+    <Card className="Product">
+      <Card.Img variant="top" src={image} className="ProductImage" />
+      <Card.Body className="ProductContent">
+        <Card.Title className="ProductTitle">{title}</Card.Title>
+        <Card.Text className="ProductDescription">{description}</Card.Text>
+        <Card.Text className="ProductCategory">Category: {category}</Card.Text>
+        <Card.Text className="ProductPrice">
+          Price: ${formatPrice(price)}
+        </Card.Text>
+        <Card.Text className="ProductRating">
+          Rating: {rating.rate} ({rating.count} reviews)
+        </Card.Text>
+        {/* <Button variant="primary" onClick={() => handleBuyClick(id, title)}>
+          Buy Now
+        </Button> */}
+      </Card.Body>
+    </Card>
   );
 };
 

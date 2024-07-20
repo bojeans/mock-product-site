@@ -1,23 +1,18 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 
 type SearchByProps = {
   handleSearchChange: (value: string) => void;
 };
 
 const SearchBy = ({ handleSearchChange }: SearchByProps) => {
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleSearchChange(e.target.value);
-  };
-
   return (
-    <form action="/search" method="get">
-      <input
-        type="text"
-        name="q"
-        placeholder="Search..."
-        onChange={handleSearch}
-      />
-    </form>
+    <Form.Control
+      type="text"
+      placeholder="Search..."
+      className="search-box"
+      onChange={(e) => handleSearchChange(e.target.value)}
+    />
   );
 };
 

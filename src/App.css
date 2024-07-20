@@ -1,69 +1,198 @@
-/* Container class */
 .app-container {
-  text-align: center;
-  font-family: 'Roboto', sans-serif; 
-  max-width: 75rem; 
-  margin: 0 auto; 
-  padding: 0 1.5rem; 
+  font-family: 'Roboto', sans-serif;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-/* Grid for products */
+.main-title {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.disclaimer-description {
+  margin: 1rem;
+  font-size: 0.75rem;
+
+}
+
 .Products {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); 
-  gap: 1.5rem; 
-  justify-items: center;
-  margin-top: 2rem; 
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 1rem;
+  padding: 1rem;
 }
 
-/* Product item */
 .Product {
-  border: 0.1rem solid #e0e0e0; 
+  display: grid;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border: 0.1rem solid #e0e0e0;
   list-style: none;
-  width: 100%; 
-  padding: 1.5rem; 
-  background-color: #fff; 
-  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1); 
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
 }
 
-/* Grid for product content */
 .ProductContent {
   display: grid;
-  grid-template-rows: auto auto 1fr auto; 
-  gap: 0.75rem; 
-  justify-items: center;
+  margin: 0 0.5rem;
+}
+
+.ProductTitle {
+  display: grid;
+  font-size: 1.25rem;
+  font-weight: bold;
+  align-items: center;
+}
+
+.ProductDescription {
+  display: grid;
+  align-items: left;
+  margin-top: 1rem;
+  font-style: italic;
 }
 
 .ProductImage {
-  width: 100%; 
-  max-height: 12.5rem; 
-  object-fit: cover; 
+  width: 70%;
+  max-height: 12.5rem;
+  object-fit: fill;
+  padding: 1rem;
+  margin: 0 auto;
 }
 
-.Product h2, .Product p {
-  margin: 0.3125rem 0; 
+.ProductCategory {}
+.ProductPrice {
+  font-weight: bold;
+}
+.ProductRating {
+
 }
 
-/* Pagination styles */
+/* Sort/Filter Drop down Menus */
+.filter-by,
+.sort-by {
+  width: auto;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+}
+
+/* This Styles For all Sort/Filter/Search container area */
+.filter-sort {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* 'Filter By' & 'Sort By' text */
+.sort-label,
+.filter-label {
+  color: rgb(92, 92, 92);
+  margin: 0 0.5rem;
+}
+
+.search-box {
+  display: grid;
+  margin: 1rem auto;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+  width: 70%;
+  background-color: rgb(238, 238, 238);
+  border-radius: 0.25rem;
+  border: 1px solid;
+}
+
+/* Pagination */
 .pagination {
   margin-top: 1.25rem;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
 }
 
-.pagination-button {
+.pagination button {
   margin: 0 0.3125rem;
   padding: 0.5rem 1rem;
-  background-color: #3498db; 
-  color: #fff; 
+  background-color: #3498db;
+  color: #fff;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
-  text-decoration: none; 
-  font-family: 'Roboto', sans-serif; 
+  text-decoration: none;
+}
+
+.pagination button:hover {
+  background-color: #93faff;
+  color: black;
 }
 
 .pagination-info {
   font-weight: bold;
+  text-align: center;
+  margin-top: 0.5rem;
 }
+
+.no-results {
+  text-align: center;
+  padding: 1.25rem;
+  color: #666;
+  font-size: 1rem;
+}
+
+
+@media (min-width: 48rem) { 
+  .Product {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+  }
+  .filter-sort {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0;
+    text-align: end;   
+  }
+  .search-box {
+    display: grid;
+    margin: 1rem auto;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+    width: 50%;
+    text-align: center;
+    
+  }
+  .sort-container {
+    text-align: start;
+    margin: 0;
+  }
+  .ProductImage {
+    width: 70%;
+    height: auto;
+    margin-top: 1.5rem;        
+  }
+  .ProductContent {
+    margin: 1rem;
+  }
+  .ProductPrice,
+  .ProductRating {
+    text-align: center;
+    margin: 0.25rem;
+  }
+}
+
+@media (min-width: 60rem) {
+  .app-container {
+    max-width: 50rem;
+  }
+
+  .Product {
+    margin-bottom: 2rem;
+  }
+
+  .pagination,
+  .pagination button {
+    font-size: 1.5rem;
+  }
+    
+  }

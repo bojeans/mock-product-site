@@ -1,22 +1,23 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 
 type FilterByProps = {
   handleFilterChange: (value: string) => void;
 };
 
 const FilterBy: React.FC<FilterByProps> = ({ handleFilterChange }) => {
-  const handleFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleFilter = (e: React.ChangeEvent<any>) => {
     handleFilterChange(e.target.value);
   };
 
   return (
-    <div>
-      <label htmlFor="filter">Filter By:</label>
-      <select id="filter" onChange={handleFilter}>
-        <option value="category">Category</option>
+    <Form.Group controlId="filter">
+      <Form.Label className="filter-label">Filter By:</Form.Label>
+      <Form.Control as="select" onChange={handleFilter} className="filter-by">
+        <option value="all">All</option>
         <option value="rating">Rating 4 or higher</option>
-      </select>
-    </div>
+      </Form.Control>
+    </Form.Group>
   );
 };
 
