@@ -120,7 +120,7 @@ const App: React.FC = () => {
 
       <SearchBy handleSearchChange={handleSearchChange} />
 
-      <div className="products-container">
+      <div>
         <Products products={currentProducts} />
       </div>
       <div className="pagination">

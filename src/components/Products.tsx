@@ -11,15 +11,7 @@ const Products = ({ products }: ProductsProps) => {
     <Container className="Products">
       <Row>
         {products.map((product) => (
-          <Col
-            key={product.id}
-            xs={12}
-            sm={6}
-            md={4}
-            lg={4}
-            xl={4}
-            className="mb-4"
-          >
+          <Col key={product.id}>
             <Product
               id={product.id}
               title={product.title}

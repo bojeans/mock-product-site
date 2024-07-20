@@ -7,7 +7,7 @@ type SortByProps = {
 
 const SortBy = ({ handleSortChange }: SortByProps) => {
   return (
-    <Form.Group controlId="sort">
+    <Form.Group controlId="sort" className="sort-container">
       <Form.Label className="sort-label">Sort By:</Form.Label>
       <Form.Control
         as="select"
