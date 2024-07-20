@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { formatPrice } from "../utils/formatPrice";
 
 type ProductProps = {
   id: number;
@@ -27,7 +28,9 @@ const Product: React.FC<ProductProps> = ({
         <Card.Title className="ProductTitle">{title}</Card.Title>
         <Card.Text className="ProductDescription">{description}</Card.Text>
         <Card.Text className="ProductCategory">Category: {category}</Card.Text>
-        <Card.Text className="ProductPrice">Price: ${price}</Card.Text>
+        <Card.Text className="ProductPrice">
+          Price: ${formatPrice(price)}
+        </Card.Text>
         <Card.Text className="ProductRating">
           Rating: {rating.rate} ({rating.count} reviews)
         </Card.Text>
