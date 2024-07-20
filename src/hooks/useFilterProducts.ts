@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { ProductProps } from "../types";
 
 const useFilterProducts = (
@@ -8,7 +8,10 @@ const useFilterProducts = (
 ) => {
   const handleFilterChange = useCallback(
     (value: string) => {
-      if (value === "rating") {
+      if (value === "all") {
+        setFilteredProducts(products);
+        setSortedProducts(products);
+      } else if (value === "rating") {
         const updatedProducts = products.filter(
           (product) => product.rating.rate >= 4
         );
@@ -24,6 +27,11 @@ const useFilterProducts = (
     },
     [products, setFilteredProducts, setSortedProducts]
   );
+
+  useEffect(() => {
+    setFilteredProducts(products);
+    setSortedProducts(products);
+  }, [products, setFilteredProducts, setSortedProducts]);
 
   return { handleFilterChange };
 };
