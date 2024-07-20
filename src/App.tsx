@@ -94,8 +94,8 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      <h1>Mock Shop for Coding Demonstration</h1>
-      <span>
+      <h1 className="main-title">Mock Shop for Coding Demonstration</h1>
+      <span className="disclaimer-description">
         *Product information fetched from{" "}
         <a
           href="https://fakestoreapi.com/docs"

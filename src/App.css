@@ -4,6 +4,17 @@
   padding: 0 1.5rem;
 }
 
+.main-title {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.disclaimer-description {
+  margin: 1rem;
+  font-size: 0.75rem;
+
+}
+
 .Products {
   display: grid;
   grid-template-columns: 1fr;
@@ -72,6 +83,7 @@
 .filter-sort {
   margin-top: 1rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 /* 'Filter By' & 'Sort By' text */
@@ -83,11 +95,10 @@
 
 .search-box {
   display: grid;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  width: 50%;
-  height: 5vh;
+  margin: 1rem auto;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+  width: 70%;
   background-color: rgb(238, 238, 238);
   border-radius: 0.25rem;
   border: 1px solid;
@@ -132,10 +143,10 @@
   }
   .search-box {
     display: grid;
-    font-size: 1.5rem;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
+    margin: 1rem auto;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+    width: 50%;
   }
   .sort-container {
     text-align: start;
@@ -146,18 +157,16 @@
     height: auto;
     margin-top: 1.5rem;        
   }
+  .ProductContent {
+    margin: 1rem;
+  }
+  .ProductPrice,
+  .ProductRating {
+    text-align: center;
+    margin: 0.25rem;
+  }
 }
 
 @media (min-width: 60rem) {
-  .Products {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .filter-sort {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  }
+  
 }
