@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { formatPrice } from "../utils/formatPrice";
 import { ProductProps } from "../types";
 
@@ -12,6 +12,10 @@ const Product: React.FC<ProductProps> = ({
   price,
   rating,
 }) => {
+  const handleBuyClick = () => {
+    // Placeholder for the buy button click event handler
+    alert(`Buying ${title}`);
+  };
   return (
     <Card className="Product">
       <Card.Img variant="top" src={image} className="ProductImage" />
@@ -25,6 +29,9 @@ const Product: React.FC<ProductProps> = ({
         <Card.Text className="ProductRating">
           Rating: {rating.rate} ({rating.count} reviews)
         </Card.Text>
+        <Button variant="primary" onClick={handleBuyClick}>
+          Buy Now
+        </Button>
       </Card.Body>
     </Card>
   );
