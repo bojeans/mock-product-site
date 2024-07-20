@@ -1,31 +1,25 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { ProductProps } from "../types";
 
 const useSortProducts = (
-  filteredProducts: any[],
-  setSortedProducts: (products: any[]) => void
+  filteredProducts: ProductProps[],
+  setSortedProducts: React.Dispatch<React.SetStateAction<ProductProps[]>>
 ) => {
-  const [currentSort, setCurrentSort] = useState<string>("");
-
   const handleSortChange = (value: string) => {
-    setCurrentSort(value);
     let sorted = [...filteredProducts];
     if (value === "lowprice") {
-      sorted = [...filteredProducts].sort((a, b) => a.price - b.price);
+      sorted = sorted.sort((a, b) => a.price - b.price);
     } else if (value === "highprice") {
-      sorted = [...filteredProducts].sort((a, b) => b.price - a.price);
+      sorted = sorted.sort((a, b) => b.price - a.price);
     } else if (value === "category") {
-      sorted = [...filteredProducts].sort((a, b) =>
-        a.category.localeCompare(b.category)
-      );
+      sorted = sorted.sort((a, b) => a.category.localeCompare(b.category));
     } else if (value === "rating") {
-      sorted = [...filteredProducts].sort(
-        (a, b) => b.rating.rate - a.rating.rate
-      );
+      sorted = sorted.sort((a, b) => b.rating.rate - a.rating.rate);
     }
     setSortedProducts(sorted);
   };
 
-  return { currentSort, handleSortChange };
+  return { handleSortChange };
 };
 
 export default useSortProducts;

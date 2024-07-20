@@ -1,15 +1,13 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { ProductProps } from "../types";
 
 const useFilterProducts = (
-  products: any[],
-  setFilteredProducts: (products: any[]) => void,
-  setSortedProducts: (products: any[]) => void
+  products: ProductProps[],
+  setFilteredProducts: React.Dispatch<React.SetStateAction<ProductProps[]>>,
+  setSortedProducts: React.Dispatch<React.SetStateAction<ProductProps[]>>
 ) => {
-  const [currentFilter, setCurrentFilter] = useState<string>("");
-
   const handleFilterChange = (value: string) => {
-    setCurrentFilter(value);
-    if (currentFilter === "rating" && value !== "rating") {
+    if (value !== "rating") {
       setFilteredProducts(products);
       setSortedProducts(products);
     } else if (value === "rating") {
@@ -27,7 +25,7 @@ const useFilterProducts = (
     }
   };
 
-  return { currentFilter, handleFilterChange };
+  return { handleFilterChange };
 };
 
 export default useFilterProducts;

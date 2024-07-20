@@ -1,14 +1,12 @@
 import { useState } from "react";
+import { ProductProps } from "../types";
 
 const useSearchProducts = (
-  products: any[],
-  setFilteredProducts: (products: any[]) => void,
-  setSortedProducts: (products: any[]) => void
+  products: ProductProps[],
+  setFilteredProducts: React.Dispatch<React.SetStateAction<ProductProps[]>>,
+  setSortedProducts: React.Dispatch<React.SetStateAction<ProductProps[]>>
 ) => {
-  const [search, setSearch] = useState<string>("");
-
   const handleSearchChange = (value: string) => {
-    setSearch(value);
     if (value === "") {
       setFilteredProducts(products);
       setSortedProducts(products);
@@ -21,7 +19,7 @@ const useSearchProducts = (
     }
   };
 
-  return { search, handleSearchChange };
+  return { handleSearchChange };
 };
 
 export default useSearchProducts;

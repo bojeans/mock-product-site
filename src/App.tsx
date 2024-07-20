@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import "./App.css";
+// components
 import Products from "./components/Products";
 import SortBy from "./components/sortBy";
 import FilterBy from "./components/filterBy";
 import SearchBy from "./components/searchBy";
+// hooks
 import useFetchProducts from "./hooks/useFetchProducts";
 import useSortProducts from "./hooks/useSortProducts";
 import useFilterProducts from "./hooks/useFilterProducts";
 import useSearchProducts from "./hooks/useSearchProducts";
+// types
+import { ProductProps } from "./types";
 
 const App: React.FC = () => {
   const {
@@ -32,16 +36,16 @@ const App: React.FC = () => {
     setSortedProducts
   );
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const productsPerPage: number = 6;
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
-  const indexOfLastProduct = currentPage * productsPerPage;
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = sortedProducts.slice(
+  const indexOfLastProduct: number = currentPage * productsPerPage;
+  const indexOfFirstProduct: number = indexOfLastProduct - productsPerPage;
+  const currentProducts: ProductProps[] = sortedProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );

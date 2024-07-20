@@ -1,16 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { formatPrice } from "../utils/formatPrice";
-
-type ProductProps = {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  description: string;
-  price: number;
-  rating: { rate: number; count: number };
-};
+import { ProductProps } from "../types";
 
 const Product: React.FC<ProductProps> = ({
   id,
