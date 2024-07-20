@@ -8,7 +8,7 @@ const useFetchProducts = () => {
   const [sortedProducts, setSortedProducts] = useState<ProductProps[]>([]);
 
   const fetchProducts = async () => {
-    const data: ProductProps[] = await fetchAPI();
+    const data = await fetchAPI();
     setProducts(data);
     setFilteredProducts(data);
     setSortedProducts(data);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
 // components
 import Products from "./components/Products";
@@ -10,8 +10,7 @@ import useFetchProducts from "./hooks/useFetchProducts";
 import useSortProducts from "./hooks/useSortProducts";
 import useFilterProducts from "./hooks/useFilterProducts";
 import useSearchProducts from "./hooks/useSearchProducts";
-// types
-import { ProductProps } from "./types";
+import usePagination from "./hooks/usePagination";
 
 const App: React.FC = () => {
   const {
@@ -21,34 +20,31 @@ const App: React.FC = () => {
     sortedProducts,
     setSortedProducts,
   } = useFetchProducts();
+
   const { handleSortChange } = useSortProducts(
     filteredProducts,
     setSortedProducts
   );
+
   const { handleFilterChange } = useFilterProducts(
     products,
     setFilteredProducts,
     setSortedProducts
   );
+
   const { handleSearchChange } = useSearchProducts(
     products,
     setFilteredProducts,
     setSortedProducts
   );
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const productsPerPage: number = 6;
-
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const indexOfLastProduct: number = currentPage * productsPerPage;
-  const indexOfFirstProduct: number = indexOfLastProduct - productsPerPage;
-  const currentProducts: ProductProps[] = sortedProducts.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
+  const productsPerPage = 6;
+  const { currentPage, totalPages, paginate, currentItems } = usePagination(
+    sortedProducts.length,
+    productsPerPage
   );
+
+  const currentProducts = currentItems(sortedProducts);
 
   return (
     <div className="app-container">
@@ -89,26 +85,21 @@ const App: React.FC = () => {
         >
           {"<"}
         </button>
-        {Array.from({
-          length: Math.ceil(sortedProducts.length / productsPerPage),
-        }).map((_, index) => (
+        {Array.from({ length: totalPages }).map((_, index) => (
           <button key={index + 1} onClick={() => paginate(index + 1)}>
             {index + 1}
           </button>
         ))}
         <button
           onClick={() => paginate(currentPage + 1)}
-          disabled={
-            currentPage === Math.ceil(sortedProducts.length / productsPerPage)
-          }
+          disabled={currentPage === totalPages}
         >
           {">"}
         </button>
       </div>
       <div className="pagination-info">
         <p>
-          Page {currentPage} of{" "}
-          {Math.ceil(sortedProducts.length / productsPerPage)}
+          Page {currentPage} of {totalPages}
         </p>
       </div>
     </div>
