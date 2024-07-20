@@ -113,12 +113,13 @@ const App: React.FC = () => {
           Github Repo
         </a>
       </span>
-      <div className="filter-sort">
-        <SortBy handleSortChange={handleSortChange} />
-        <FilterBy handleFilterChange={handleFilterChange} />
+      <div className="feature-container">
+        <div className="filter-sort">
+          <SortBy handleSortChange={handleSortChange} />
+          <FilterBy handleFilterChange={handleFilterChange} />
+        </div>
+        <SearchBy handleSearchChange={handleSearchChange} />
       </div>
-
-      <SearchBy handleSearchChange={handleSearchChange} />
 
       <div>
         <Products products={currentProducts} />
