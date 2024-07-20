@@ -56,12 +56,11 @@
 
 }
 
+/* Sort/Filter Drop down Menus */
 .filter-by,
-.sort-by,
-.search-by {
-  display: block;
+.sort-by {
   width: auto;
-  margin: 1rem;
+  margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 1px solid #ccc;
@@ -70,21 +69,26 @@
 /* This Styles For all Sort/Filter/Search container area */
 .filter-sort {
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /* 'Filter By' & 'Sort By' text */
 .sort-label,
 .filter-label {
   color: rgb(92, 92, 92);
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 
 .search-box {
   display: grid;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
-
+  margin: 0;
+  width: 50%;
+  height: 5vh;
+  background-color: rgb(238, 238, 238);
+  border-radius: 0.25rem;
+  border: 1px solid;
 }
 
 /* Pagination */
@@ -113,46 +117,31 @@
   margin-top: 0.5rem;
 }
 
-@media (min-width: 36rem) { 
+@media (min-width: 48rem) { 
   .Products {
+    display: grid;
     grid-template-columns: repeat(2, 1fr); 
   }
-  .filter-by,
-  .sort-by,
-  .search-by {
-  margin: 1rem;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid #ccc;
-  }
   .filter-sort {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  gap: 1rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 }
 
-@media (min-width: 62rem) {
+@media (min-width: 60rem) {
   .Products {
     grid-template-columns: repeat(3, 1fr);
   }
-
-  .filter-by,
-  .sort-by,
-  .search-by {
-  margin: 1rem;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid #ccc;
-  }
-
   .filter-sort {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  gap: 1rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 }
