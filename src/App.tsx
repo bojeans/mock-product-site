@@ -54,7 +54,9 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      <h1 className="main-title">Mock Shop for Coding Demonstration</h1>
+      <h1 className="main-title">
+        Mock fetch products for Coding Demonstration
+      </h1>
       <span className="disclaimer-description">
         *Product information fetched from{" "}
         <a

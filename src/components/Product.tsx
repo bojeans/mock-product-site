@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { formatPrice } from "../utils/formatPrice";
 import { ProductProps } from "../types";
-import { handleBuyClick } from "../utils/payment";
+// import { handleBuyClick } from "../utils/payment";
 
 const Product: React.FC<ProductProps> = ({
   id,
@@ -26,9 +26,9 @@ const Product: React.FC<ProductProps> = ({
         <Card.Text className="ProductRating">
           Rating: {rating.rate} ({rating.count} reviews)
         </Card.Text>
-        <Button variant="primary" onClick={() => handleBuyClick(id, title)}>
+        {/* <Button variant="primary" onClick={() => handleBuyClick(id, title)}>
           Buy Now
-        </Button>
+        </Button> */}
       </Card.Body>
     </Card>
   );
