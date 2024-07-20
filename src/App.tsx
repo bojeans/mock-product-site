@@ -46,6 +46,12 @@ const App: React.FC = () => {
 
   const currentProducts = currentItems(sortedProducts);
 
+  const handlePaginationClick = (e: React.MouseEvent, pageNumber: number) => {
+    e.preventDefault();
+    paginate(pageNumber);
+    window.scrollTo(0, 0); // Scroll to top to avoid jumping
+  };
+
   return (
     <div className="app-container">
       <h1 className="main-title">Mock Shop for Coding Demonstration</h1>
@@ -75,33 +81,44 @@ const App: React.FC = () => {
         <SearchBy handleSearchChange={handleSearchChange} />
       </div>
 
-      <div>
-        <Products products={currentProducts} />
-      </div>
-      <div className="pagination">
-        <button
-          onClick={() => paginate(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          {"<"}
-        </button>
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <button key={index + 1} onClick={() => paginate(index + 1)}>
-            {index + 1}
-          </button>
-        ))}
-        <button
-          onClick={() => paginate(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          {">"}
-        </button>
-      </div>
-      <div className="pagination-info">
-        <p>
-          Page {currentPage} of {totalPages}
-        </p>
-      </div>
+      {currentProducts.length === 0 ? (
+        <div className="no-results">
+          <p>No products found matching your criteria.</p>
+        </div>
+      ) : (
+        <>
+          <div className="pagination">
+            <button
+              onClick={(e) => handlePaginationClick(e, currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              {"<"}
+            </button>
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                key={index + 1}
+                onClick={(e) => handlePaginationClick(e, index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              onClick={(e) => handlePaginationClick(e, currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              {">"}
+            </button>
+          </div>
+          <div className="pagination-info">
+            <p>
+              Page {currentPage} of {totalPages}
+            </p>
+          </div>
+          <div>
+            <Products products={currentProducts} />
+          </div>
+        </>
+      )}
     </div>
   );
 };
