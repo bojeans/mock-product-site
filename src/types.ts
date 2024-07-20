@@ -14,3 +14,8 @@ export type PaginationHookType = {
   paginate: (pageNumber: number) => void;
   currentItems: (items: any[]) => any[];
 };
+
+export type HandleBuyClickParams = {
+  productId: number;
+  title: string;
+};

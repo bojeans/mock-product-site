@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { formatPrice } from "../utils/formatPrice";
 import { ProductProps } from "../types";
+import { handleBuyClick } from "../utils/payment";
 
 const Product: React.FC<ProductProps> = ({
   id,
@@ -12,10 +13,6 @@ const Product: React.FC<ProductProps> = ({
   price,
   rating,
 }) => {
-  const handleBuyClick = () => {
-    // Placeholder for the buy button click event handler
-    alert(`Buying ${title}`);
-  };
   return (
     <Card className="Product">
       <Card.Img variant="top" src={image} className="ProductImage" />
@@ -29,7 +26,7 @@ const Product: React.FC<ProductProps> = ({
         <Card.Text className="ProductRating">
           Rating: {rating.rate} ({rating.count} reviews)
         </Card.Text>
-        <Button variant="primary" onClick={handleBuyClick}>
+        <Button variant="primary" onClick={() => handleBuyClick(id, title)}>
           Buy Now
         </Button>
       </Card.Body>
