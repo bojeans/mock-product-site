@@ -19,6 +19,9 @@ const usePagination = (
     }
   };
 
+  // Function to reset the pagination to the first page
+  const resetPagination = () => setCurrentPage(1);
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = (items: any[]) =>
@@ -29,6 +32,7 @@ const usePagination = (
     totalPages,
     paginate,
     currentItems,
+    resetPagination,
   };
 };
 

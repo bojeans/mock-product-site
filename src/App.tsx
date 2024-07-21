@@ -21,35 +21,44 @@ const App: React.FC = () => {
     setSortedProducts,
   } = useFetchProducts();
 
-  const { handleSortChange } = useSortProducts(
-    filteredProducts,
-    setSortedProducts
-  );
-
-  const { handleFilterChange } = useFilterProducts(
-    products,
-    setFilteredProducts,
-    setSortedProducts
-  );
-
-  const { handleSearchChange } = useSearchProducts(
-    products,
-    setFilteredProducts,
-    setSortedProducts
-  );
-
   const productsPerPage = 6;
-  const { currentPage, totalPages, paginate, currentItems } = usePagination(
-    sortedProducts.length,
-    productsPerPage
+  const { currentPage, totalPages, paginate, currentItems, resetPagination } =
+    usePagination(sortedProducts.length, productsPerPage);
+
+  const sortProducts = useSortProducts(filteredProducts, setSortedProducts);
+  const filterProducts = useFilterProducts(
+    products,
+    setFilteredProducts,
+    setSortedProducts
   );
+  const searchProducts = useSearchProducts(
+    products,
+    setFilteredProducts,
+    setSortedProducts
+  );
+
+  const handleSortChange = (sortCriteria: any) => {
+    sortProducts.handleSortChange(sortCriteria);
+    resetPagination();
+  };
+
+  const handleFilterChange = (filterCriteria: any) => {
+    filterProducts.handleFilterChange(filterCriteria);
+    resetPagination();
+  };
+
+  const handleSearchChange = (searchQuery: any) => {
+    searchProducts.handleSearchChange(searchQuery);
+    resetPagination();
+  };
 
   const currentProducts = currentItems(sortedProducts);
 
+  // Pagination click handler remains unchanged
   const handlePaginationClick = (e: React.MouseEvent, pageNumber: number) => {
     e.preventDefault();
     paginate(pageNumber);
-    window.scrollTo(0, 0); // Scroll to top to avoid jumping
+    window.scrollTo(0, 0);
   };
 
   return (

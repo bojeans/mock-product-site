@@ -13,6 +13,7 @@ export type PaginationHookType = {
   totalPages: number;
   paginate: (pageNumber: number) => void;
   currentItems: (items: any[]) => any[];
+  resetPagination: () => void;
 };
 
 export type HandleBuyClickParams = {
