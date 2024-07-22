@@ -7,12 +7,18 @@ type SearchByProps = {
 
 const SearchBy = ({ handleSearchChange }: SearchByProps) => {
   return (
-    <Form.Control
-      type="text"
-      placeholder="Search..."
-      className="search-box"
-      onChange={(e) => handleSearchChange(e.target.value)}
-    />
+    <>
+      <Form.Label htmlFor="searchBox" className="visually-hidden">
+        Search
+      </Form.Label>
+      <Form.Control
+        id="searchBox"
+        type="text"
+        placeholder="Search..."
+        className="search-box"
+        onChange={(e) => handleSearchChange(e.target.value)}
+      />
+    </>
   );
 };
 
